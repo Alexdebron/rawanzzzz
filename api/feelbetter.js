@@ -1,10 +1,14 @@
 import { askAI } from "../lib/feelbetter-client.js";
 
 export default async function handler(req, res) {
-  try {
-    const question = req.query.text;
 
-    if (!question) {
+  try {
+
+    const text = req.query.text;
+    const prompt = req.query.prompt || 
+    "You are an AI assistant created by WhiteShadow.";
+
+    if (!text) {
       return res.json({
         creator: "WhiteShadow",
         status: false,
@@ -12,19 +16,22 @@ export default async function handler(req, res) {
       });
     }
 
-    const data = await askAI(question);
+    const result = await askAI(text, prompt);
 
     res.json({
       creator: "WhiteShadow",
       status: true,
-      result: data
+      result
     });
 
   } catch (e) {
+
     res.json({
       creator: "WhiteShadow",
       status: false,
       error: e.message
     });
+
   }
+
 }
