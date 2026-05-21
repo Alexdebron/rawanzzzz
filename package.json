@@ -2,13 +2,9 @@
   "name": "whiteshadow-api",
   "version": "1.0.0",
   "type": "module",
-  "description": "WhiteShadow Multi API",
-  "main": "index.js",
-  "scripts": {
-    "start": "vercel dev"
-  },
   "dependencies": {
     "axios": "^1.8.0",
-    "playwright": "^1.55.0"
+    "playwright-core": "^1.55.0",
+    "@sparticuz/chromium": "^138.0.2"
   }
 }
